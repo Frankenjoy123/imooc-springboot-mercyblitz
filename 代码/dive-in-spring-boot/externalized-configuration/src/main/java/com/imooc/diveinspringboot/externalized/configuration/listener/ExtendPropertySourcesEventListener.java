@@ -19,6 +19,7 @@ import java.util.Map;
 public class ExtendPropertySourcesEventListener implements ApplicationListener<ApplicationEnvironmentPreparedEvent> {
     @Override
     public void onApplicationEvent(ApplicationEnvironmentPreparedEvent event) {
+//        event.getEnvironment()
         ConfigurableEnvironment environment = event.getEnvironment();
         MutablePropertySources propertySources = environment.getPropertySources();
         Map<String, Object> source = new HashMap<>();

@@ -1,15 +1,16 @@
-# Run Listeners
+## Run Listeners
 org.springframework.boot.SpringApplicationRunListener=\
 com.imooc.diveinspringboot.externalized.configuration.listener.ExtendPropertySourcesRunListener
 
-# Event Listeners
+## Event Listeners
 org.springframework.context.ApplicationListener=\
-com.imooc.diveinspringboot.externalized.configuration.listener.ExtendPropertySourcesEventListener
+com.imooc.diveinspringboot.externalized.configuration.listener.ExtendPropertySourcesEventListener,\
+com.imooc.diveinspringboot.externalized.configuration.listener.ExtendPropertyApplicationPreparedEventListener
 
-# EnvironmentPostProcessor
+## EnvironmentPostProcessor
 org.springframework.boot.env.EnvironmentPostProcessor=\
 com.imooc.diveinspringboot.externalized.configuration.processor.ExtendPropertySourcesEnvironmentPostProcessor
-
-# ApplicationContextInitializer
+#
+## ApplicationContextInitializer
 org.springframework.context.ApplicationContextInitializer=\
 com.imooc.diveinspringboot.externalized.configuration.initializer.ExtendPropertySourcesApplicationContextInitializer

@@ -29,6 +29,11 @@ public class ConfigurationPropertiesBootstrap {
         return new User();
     }
 
+    @Bean
+    public MyUser myUser(){
+        return new MyUser();
+    }
+
     public static void main(String[] args) {
 
         Locale.setDefault(Locale.US);
@@ -40,10 +45,55 @@ public class ConfigurationPropertiesBootstrap {
 
 //        User user = context.getBean("user", User.class);
         User user = context.getBean(User.class);
-
         System.err.println("用户对象 : " + user);
+
+        MyUser myUser = context.getBean(MyUser.class);
+        System.err.println("MyUser用户对象 : " + myUser);
 
         // 关闭上下文
         context.close();
+    }
+
+
+    @ConfigurationProperties(prefix = "user")
+    public static class MyUser{
+        private Long id;
+
+        private String name;
+
+        private Integer age;
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Integer getAge() {
+            return age;
+        }
+
+        public void setAge(Integer age) {
+            this.age = age;
+        }
+
+        @Override
+        public String toString() {
+            return "MyUser{" +
+                    "id=" + id +
+                    ", name='" + name + '\'' +
+                    ", age=" + age +
+                    '}';
+        }
     }
 }

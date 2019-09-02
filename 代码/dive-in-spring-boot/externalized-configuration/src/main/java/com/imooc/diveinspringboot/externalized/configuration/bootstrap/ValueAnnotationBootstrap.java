@@ -50,18 +50,18 @@ public class ValueAnnotationBootstrap implements
 //        this.environment = environment;
 //    }
 
-//    private final Long id;
-//
-//    private final String name;
-//
-//    private final Integer age;
-//
-//    public ValueAnnotationBootstrap(@Value("${user.id}") Long id, @Value("${user.name}") String name,
-//                                    @Value("${user.age}") Integer age) {
-//        this.id = id;
-//        this.name = name;
-//        this.age = age;
-//    }
+    private final Long id;
+
+    private final String name;
+
+    private final Integer age;
+
+    public ValueAnnotationBootstrap(@Value("${user.id}") Long id, @Value("${user.name}") String name,
+                                    @Value("${user.age}") Integer age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
 
     @Bean
 //    @Autowired
@@ -89,6 +89,15 @@ public class ValueAnnotationBootstrap implements
         return user;
     }
 
+    @Bean
+    public User user3() {
+        User user = new User();
+        user.setId(this.id);
+        user.setName(this.name);
+        user.setAge(this.age);
+        return user;
+    }
+
     public static void main(String[] args) {
 
         ConfigurableApplicationContext context =
@@ -98,9 +107,11 @@ public class ValueAnnotationBootstrap implements
 
         User user = context.getBean("user", User.class);
         User user2 = context.getBean("user2", User.class);
+        User user3 = context.getBean("user3", User.class);
 
         System.err.println("用户对象 : " + user);
         System.err.println("用户对象2 : " + user2);
+        System.err.println("用户对象3 : " + user3);
 
         // 关闭上下文
         context.close();
